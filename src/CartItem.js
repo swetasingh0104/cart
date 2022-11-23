@@ -11,13 +11,17 @@ class CartItem extends React.Component{
         }
         // this.increaseQuantity = this.increaseQuantity.bind(this);
       }
+      increaseQuantity = () => {
+        console.log('this', this.state);
+      }
     render(){
+        const {price, title, qty}= this.state;
         return (
             <div className="cart-item">
                 <div className="left-block">
                     <img style={styles.image} alt="img" src="https://t4.ftcdn.net/jpg/01/73/81/41/240_F_173814149_lA4Sgl2tPCWeLJaYFUP7U9h0klYykiOL.jpg"/>
                 </div>
-                <div className="righ-block">
+                <div className="right-block">
                     <div style={ { fontSize: 25 } }>Phone</div>
                     <div style={ { color: '#777' } }>Rs 999</div>
                     <div style={ { color: '#777' } }>Qty: 1</div>
@@ -27,7 +31,7 @@ class CartItem extends React.Component{
               alt="increase"
               className="action-icons"
               src="https://t4.ftcdn.net/jpg/01/26/10/59/240_F_126105961_6vHCTRX2cPOnQTBvx9OSAwRUapYTEmYA.jpg"
-              
+              onClick={this.increaseQuantity}
             />
             <img
               alt="decrease"

@@ -1,17 +1,19 @@
 import React from "react";
 
-class Navbar extends React.Component{   
-    render(){ 
+const Navbar = (props) =>{ 
+   
+
+        
         return (
             <div style={styles.nav}>
                 <div style={styles.cartIconContainer}>
                     <img style={styles.cartIcon} src="https://cdn-icons-png.flaticon.com/128/3405/3405668.png"  alt="cart"/>
-                    <span style={styles.cartCount}> 3</span>
+                    <span style={styles.cartCount}> {props.count}</span>
                 </div>
             </div>
         );
     }
-}
+
 
 
 const styles = {
@@ -32,9 +34,9 @@ const styles = {
     cartCount: {
       background: 'yellow',
       borderRadius: '50%',
-      padding: '4px 10px',
+      padding: '4px 8px',
       position: 'absolute',
-      right: 4,
+      right: 0,
       top: -9
     }
   };

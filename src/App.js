@@ -10,21 +10,21 @@ constructor () {
           price: 999,
           title: 'Mobile Phone',
           qty: 1,
-          img: '',
+          img: 'https://t4.ftcdn.net/jpg/01/73/81/41/240_F_173814149_lA4Sgl2tPCWeLJaYFUP7U9h0klYykiOL.jpg',
           id:1
       },
       {
           price: 99,
           title: 'Watch',
           qty: 0,
-          img: '',
+          img: 'https://tse1.mm.bing.net/th?id=OIP.ioMJsi__9PIQmCv6jDUKIAHaMh&pid=Api&P=0',
           id:2
       },
       {
           price: 70,
           title: 'Cover',
           qty: 0,
-          img: '',
+          img: 'https://tse2.mm.bing.net/th?id=OIP.ETxC6F1n4tjGqScOSL7iggHaJQ&pid=Api&P=0',
           id:3
       }
     ]
@@ -61,6 +61,15 @@ handleDeleteProduct = (id) => {
           products:item
       })
 }
+getCartCount = () => {
+  const {products} = this.state;
+  let count = 0;
+  products.forEach((product) => {
+    count+=product.qty;
+  })
+  return count;
+}
+
 
 render(){
 
@@ -68,13 +77,16 @@ const {products} = this.state;
 return (
   <React.Fragment>
       <div className="App">
-      <Navbar />
+      <Navbar 
+        count ={this.getCartCount()}
+      />
       < Cart
       products = {products}
       onIncreaseQuantity = {this.handleIncreaseQuantity}
       onDecreaseQuantity = {this.handleDecreaseQuantity}
       onDeleteProduct = {this.handleDeleteProduct} 
       />
+      
   </div>
   </React.Fragment>
   

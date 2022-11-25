@@ -93,7 +93,7 @@ return (
       onDecreaseQuantity = {this.handleDecreaseQuantity}
       onDeleteProduct = {this.handleDeleteProduct} 
       />
-      <div>TOTAL :{this.getCartTotal()}</div>
+      <div style={{fontSize: 20, padding: 20}}>TOTAL :{this.getCartTotal()}</div>
   </div>
   </React.Fragment>
   

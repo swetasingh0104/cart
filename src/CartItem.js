@@ -2,32 +2,9 @@ import React from "react";
 
 class CartItem extends React.Component{
   
-      increaseQuantity = () => {
-        // this.setState({
-        //   qty: this.state.qty+1         //Shallow merging: it allows to make change only specific value of a state
-        // }, () => {});
-
-        this.setState((prevState) =>{
-          return {qty: prevState.qty+1
-          }
-        });
-      }
-      decreaseQuantity = () => {
-        // this.setState({
-        //   qty: this.state.qty+1         //Shallow merging: it allows to make change only specific value of a state
-        // }, () => {});
-
-        this.setState((prevState) =>{
-          if(prevState.qty>0)
-          return {qty: prevState.qty-1
-          }
-          else
-          return 0
-        });
-      }
-
+     
     render(){
-      console.log(this.props)
+      //console.log(this.props.product)
         const {price, title, qty}= this.props.product;
         return (
             <div className="cart-item">
@@ -44,13 +21,13 @@ class CartItem extends React.Component{
               alt="increase"
               className="action-icons"
               src="https://t4.ftcdn.net/jpg/01/26/10/59/240_F_126105961_6vHCTRX2cPOnQTBvx9OSAwRUapYTEmYA.jpg"
-              onClick={this.increaseQuantity}
+              onClick={() => this.props.onIncreaseQuantity(this.props.product)}
             />
             <img
               alt="decrease"
               className="action-icons"
               src="https://t3.ftcdn.net/jpg/03/73/49/86/240_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg"
-              onClick={this.decreaseQuantity}
+              onClick={()=> this.props.onDecreaseQuantity(this.props.product)}
             />
             <img
               alt="delete"

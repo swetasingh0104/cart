@@ -1,16 +1,7 @@
 import React from "react";
 
 class CartItem extends React.Component{
-    constructor () {
-        super();
-        this.state = {
-          price: 999,
-          title: 'Mobile Phone',
-          qty: 0,
-          img: ''
-        }
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-      }
+  
       increaseQuantity = () => {
         // this.setState({
         //   qty: this.state.qty+1         //Shallow merging: it allows to make change only specific value of a state
@@ -36,7 +27,8 @@ class CartItem extends React.Component{
       }
 
     render(){
-        const {price, title, qty}= this.state;
+      console.log(this.props)
+        const {price, title, qty}= this.props.product;
         return (
             <div className="cart-item">
                 <div className="left-block">

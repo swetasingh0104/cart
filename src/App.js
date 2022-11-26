@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Cart from './Cart';
+import Total from './Total';
 class App extends React.Component{
 constructor () {
   super();
@@ -16,14 +17,14 @@ constructor () {
       {
           price: 99,
           title: 'Watch',
-          qty: 0,
+          qty: 1,
           img: 'https://tse1.mm.bing.net/th?id=OIP.ioMJsi__9PIQmCv6jDUKIAHaMh&pid=Api&P=0',
           id:2
       },
       {
           price: 70,
           title: 'Cover',
-          qty: 0,
+          qty: 1,
           img: 'https://tse2.mm.bing.net/th?id=OIP.ETxC6F1n4tjGqScOSL7iggHaJQ&pid=Api&P=0',
           id:3
       }
@@ -32,7 +33,7 @@ constructor () {
   // this.increaseQuantity = this.increaseQuantity.bind(this);
 }
 handleIncreaseQuantity=(product) => {
-  console.log("hey please inc the qty of ", product.title);
+
   const {products}= this.state;
 
   const index = products.indexOf(product);
@@ -43,7 +44,7 @@ handleIncreaseQuantity=(product) => {
   })
 }
 handleDecreaseQuantity=(product) => {
-  console.log("hey please dec the qty of ", product.title);
+ 
   const {products}= this.state;
 
   const index = products.indexOf(product);
@@ -87,13 +88,22 @@ return (
       <Navbar 
         count ={this.getCartCount()}
       />
+      <div className='additional'>
       < Cart
       products = {products}
       onIncreaseQuantity = {this.handleIncreaseQuantity}
       onDecreaseQuantity = {this.handleDecreaseQuantity}
       onDeleteProduct = {this.handleDeleteProduct} 
       />
-      <div style={{fontSize: 20, padding: 20}}>TOTAL :{this.getCartTotal()}</div>
+      <div className='Total'>
+      <Total 
+        count ={this.getCartTotal()}
+        />
+      </div>
+        
+      
+      </div>
+      
   </div>
   </React.Fragment>
   

@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: beige;
+}
+div .Cart {
+  display: flex;
+  flex-direction: column;
 }
 .cart-item {
   display: inline-flex;
@@ -25,7 +30,28 @@ body {
   cursor: pointer;
 }
 
-.Cart {
+.additional{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+ 
+  margin-bottom: 10%;
+  margin-left: 15%;
+  margin-right: 35%;
+  /* background-color: black; */
+}
+
+.total{
+  font-size: 200%;
+  display: flex;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  right: 19%;
+  margin-top: 10%;
+  background-color:aquamarine;
+}
+
+.pos{
+  margin-top: 70px;
+  margin-left: 15px;
 }

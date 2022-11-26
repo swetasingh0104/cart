@@ -75,8 +75,9 @@ getCartTotal = () => {
   let cartTotal = 0;
   products.map((product) => {
     cartTotal+=product.qty*product.price;
+    return cartTotal;
   })
-  return cartTotal;
+  
 }
 
 render(){

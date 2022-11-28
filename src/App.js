@@ -74,9 +74,19 @@ handleDecreaseQuantity=(product) => {
 
   const index = products.indexOf(product);
   
-  if(products[index].qty=== 0)
-      return 0;
-  products[index].qty -= 1;
+  if(products[index].qty===0)
+  return;
+const docRef = this.db.collection('products').doc(products[index].id);
+docRef
+.update({
+  qty: products[index].qty-1
+})
+.then(() =>{
+  console.log("quantity decreased successfully")
+})
+.catch((err) => {
+  console.log("Error : ", err);
+})
   this.setState({
       products
   })

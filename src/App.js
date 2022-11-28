@@ -52,8 +52,18 @@ handleIncreaseQuantity=(product) => {
   const {products}= this.state;
 
   const index = products.indexOf(product);
+  const docRef = this.db.collection('products').doc(products[index].id);
   
-  products[index].qty += 1;
+  docRef
+  .update({
+    qty: products[index].qty+1
+  })
+  .then(() =>{
+    console.log("Updated successfully")
+  })
+  .catch((err) => {
+    console.log("Error : ", err);
+  })
   this.setState({
       products
   })
@@ -63,6 +73,7 @@ handleDecreaseQuantity=(product) => {
   const {products}= this.state;
 
   const index = products.indexOf(product);
+  
   if(products[index].qty=== 0)
       return 0;
   products[index].qty -= 1;
@@ -123,7 +134,7 @@ return (
       <Navbar 
         count ={this.getCartCount()}
       />
-      <button onClick={this.addProduct}>Add a product</button>
+      {/* <button onClick={this.addProduct}>Add a product</button> */}
       <div className='additional'>
       < Cart
       products = {products}

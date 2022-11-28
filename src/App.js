@@ -13,6 +13,7 @@ constructor () {
     products: [],
     loading:true
   }
+  this.db =firebase.firestore()
   // this.increaseQuantity = this.increaseQuantity.bind(this);
 }
 
@@ -32,8 +33,7 @@ componentDidMount(){
   //     loading:false
   //   })
   // })
-  firebase
-  .firestore()
+  this.db
   .collection('products')
   .onSnapshot((snapshot) =>{
     const products= snapshot.docs.map((doc) =>{
@@ -96,6 +96,24 @@ getCartTotal = () => {
   
 }
 
+addProduct =() =>{
+  this.db
+  .collection('products')
+  .add({
+    img: 'https://tse1.mm.bing.net/th?id=OIP.dp-nNvKXYs2hS0o2tcOkWAHaJF&pid=Api&P=0',
+    title: "Washing Machine",
+    qty: 3,
+    price: 2999
+  })
+  .then((docRef)=>{
+    console.log("product has been added", docRef);
+  })
+  .catch((err)=>{
+    console.log('error:', err);
+  })
+
+}
+
 render(){
 
 const {products, loading} = this.state;
@@ -105,6 +123,7 @@ return (
       <Navbar 
         count ={this.getCartCount()}
       />
+      <button onClick={this.addProduct}>Add a product</button>
       <div className='additional'>
       < Cart
       products = {products}

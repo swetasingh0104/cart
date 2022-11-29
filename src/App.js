@@ -88,7 +88,7 @@ console.log("Error : ", err);
 
 }
 handleDeleteProduct = (id) => {
-    const {products}= this.state;
+    // const {products}= this.state;
     // const item = products.filter((item) => item.id!==id);
     // this.setState({
     //     products:item
